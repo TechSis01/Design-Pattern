@@ -40,13 +40,11 @@ deleteNumber(index){
   
 }
     dialNumber(){
-        this.gloVariable = prompt("input the phone number you want to dial")
-        if (!this.phoneNumData.includes(this.gloVariable)) {
-            console.log(`${this.gloVariable} is invalid`);
-        }
-        else if(this.phoneNumData.includes(this.gloVariable)){
-                this.notifyObservers2(this.gloVariable);
-        }
+        this.gloVariable = prompt("input the phone number you want to dial");
+       
+          this.notifyObservers2(this.gloVariable);
+        
+     
     }
     addObserver(o){
         this.observers.push(o)
