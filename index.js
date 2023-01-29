@@ -1,42 +1,26 @@
-const todos = [];
+import Telephone from "./class.js";
+import Observer from "./Observe.js";
+import Observer2 from "./Observer2.js";
+const addNumBtn = document.querySelector(".addNum")
+let DelNumBtn = document.querySelector("#deleteNum")
+let DialNumBtn = document.querySelector("#dialNum")
+let ElementObserver = document.querySelector("#observer-one")
+let ElementObserver2 = document.querySelector("#observer-two")
+//Instantiate the Telephone class
+const Tel = new Telephone()
+const eObserver1 = new Observer(ElementObserver)
+const eObserver2 = new Observer(ElementObserver2)
+Tel.addObserver(eObserver1)
+Tel.addObserver2(eObserver2)
 
-while (true) {
-  const action = prompt(
-    "What would you like to do? (create, read, update, delete, quit)"
-  );
+addNumBtn.addEventListener("click",()=>{
+  Tel.addNumber()
+})
 
-  if (action === "create") {
-    const task = prompt("Enter a task:");
-    todos.push(task);
-    console.log(`Task "${task}" has been added.`);
-  } else if (action === "read") {
-    console.log("Your to-do list:");
-    todos.forEach((task, index) => {
-      console.log(`${index + 1}. ${task}`);
-    });
-  } else if (action === "update") {
-    const index =
-      parseInt(prompt("Enter the index of the task you want to update:")) - 1;
-    if (index >= 0 && index < todos.length) {
-      const newTask = prompt("Enter the new task:");
-      todos[index] = newTask;
-      console.log(`Task "${todos[index]}" has been updated.`);
-    } else {
-      console.log("Invalid index.");
-    }
-  } else if (action === "delete") {
-    const index =
-      parseInt(prompt("Enter the index of the task you want to delete:")) - 1;
-    if (index >= 0 && index < todos.length) {
-      console.log(`Task "${todos[index]}" has been deleted.`);
-      todos.splice(index, 1);
-    } else {
-      console.log("Invalid index.");
-    }
-  } else if (action === "quit") {
-    console.log("Goodbye!");
-    break;
-  } else {
-    console.log("Invalid action.");
-  }
-}
+DelNumBtn.addEventListener("click",()=>{
+  Tel.deleteNumber()
+})
+
+DialNumBtn.addEventListener("click",()=>{
+  Tel.dialNumber()
+})
