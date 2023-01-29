@@ -3,8 +3,8 @@ class Observer2{
         this.element = element;
     }
     dialer(digits){
-        this.element.innerHTML = "hello"
-        console.log('hey')
+        this.element.innerHTML =   ` dialing ${digits.gloVariable}.....`
+        
     }
 }
 

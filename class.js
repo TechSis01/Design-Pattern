@@ -2,10 +2,11 @@ class Telephone{
     globalVariable = null
     gloVariable = null
     phoneNumData = []
-constructor(){
+constructor(container){
     this.phoneNumData = []
     this.observers = []
     this.observers2 = []
+    this.element = container
  
 }
 addNumber(){
@@ -18,8 +19,10 @@ addNumber(){
   this.phoneNumData.map((data)=>{
     console.log(`index: ${data.id}`)
     console.log(`phoneNumber: ${data.number}`)
+
  })
  this.notifyObservers(this.globalVariable)
+
 }
 deleteNumber(index){
   let deleted = prompt("input the phone number of the phone number you wish to delete")
@@ -38,13 +41,19 @@ deleteNumber(index){
 }
     dialNumber(){
         this.gloVariable = prompt("input the phone number you want to dial")
-        this.notifyObservers2(this.gloVariable)
+        if (!this.phoneNumData.includes(this.gloVariable)) {
+            console.log(`${this.gloVariable} is invalid`);
+        }
+        else if(this.phoneNumData.includes(this.gloVariable)){
+                this.notifyObservers2(this.gloVariable);
+        }
     }
     addObserver(o){
         this.observers.push(o)
     }
     addObserver2(ob){
         this.observers2.push(ob)
+        console.log(ob)
     }
     removeObserver(){
 
@@ -55,9 +64,12 @@ deleteNumber(index){
         }
     }
     notifyObservers2(){
-        for(let ob of this.observers){
+        for(let ob of this.observers2){
             ob.dialer(this)
         }
+    }
+    deleteNumber(){
+        this.element.innerHTML = ""
     }
 }
 

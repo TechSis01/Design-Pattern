@@ -7,14 +7,15 @@ let DialNumBtn = document.querySelector("#dialNum")
 let ElementObserver = document.querySelector("#observer-one")
 let ElementObserver2 = document.querySelector("#observer-two")
 //Instantiate the Telephone class
-const Tel = new Telephone()
+const Tel = new Telephone(ElementObserver2)
 const eObserver1 = new Observer(ElementObserver)
-const eObserver2 = new Observer(ElementObserver2)
+const eObserver2 = new Observer2(ElementObserver2)
 Tel.addObserver(eObserver1)
 Tel.addObserver2(eObserver2)
 
 addNumBtn.addEventListener("click",()=>{
   Tel.addNumber()
+  Tel.deleteNumber()
 })
 
 DelNumBtn.addEventListener("click",()=>{
